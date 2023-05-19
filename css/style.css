@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -33,15 +34,67 @@ header {
     header ul.sns a {
       font-size: 20px;
       color: #888; }
+  header .btnCall {
+    display: none; }
 
+/*
+  [ 반응형 구현 ]
+  - 모바일 구문에서 꼭 수정해야 하는 것
+    - 넓이값이 고정 px인 요소는 가로 폭이 100%가 되도록 변환
+    - 높이값은 고정 px값이라도 상관없음
+    - 가능한 세로관련 높이값과 여백을 줄이는 것을 추천
+*/
+@media screen and (max-width: 1000px) {
+  header {
+    height: 100px;
+    padding: 10px 10% 10px; }
+    header h1 {
+      position: relative;
+      top: -2px; }
+      header h1 a {
+        font: bold 20px/1 'arial'; }
+    header ul {
+      display: none; }
+    header .btnCall {
+      display: block;
+      font-size: 20px;
+      color: #444; } }
 #visual {
   width: 100%;
   height: calc(100vh - 120px);
-  background: #111; }
+  background: #111;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10%; }
   #visual video {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     opacity: 0.3; }
+  #visual .txt {
+    position: relative; }
+    #visual .txt h1 {
+      font-size: 8vw;
+      font-weight: normal;
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 20px; }
+    #visual .txt p {
+      width: 70%;
+      font: 20px/1.2 'arial';
+      color: #888;
+      margin-bottom: 80px; }
+    #visual .txt a {
+      display: inline-block;
+      width: 300px;
+      height: 30px;
+      font: 11px/30px 'arial';
+      color: #bbb;
+      border: 1px solid #bbb;
+      text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
