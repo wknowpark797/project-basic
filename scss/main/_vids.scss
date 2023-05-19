@@ -44,3 +44,31 @@
 		}
 	}
 }
+
+@media screen and (max-width: $tablet) {
+	#vids {
+		padding: 180px 10% 150px;
+
+		.wrap {
+			gap: 20px;
+
+			article {
+				flex: none;
+				width: calc(50% - 10px);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	#vids {
+		padding: 140px 10% 120px;
+
+		.wrap {
+			article {
+				width: 100%;
+				margin-bottom: 30px;
+			}
+		}
+	}
+}
