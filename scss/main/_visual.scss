@@ -22,13 +22,15 @@
 
 		h1 {
 			font-size: 8vw;
-			font-weight: normal;
 			line-height: 1;
 			color: #fff;
 			margin-bottom: 20px;
 		}
 
-		// %는 부모요소 기준으로 적용
+		/*
+			%는 부모요소 기준으로 적용
+			vw, vh는 viewport 기준으로 적용
+		*/
 		p {
 			width: 70%;
 			font: 20px/1.2 'arial';
@@ -48,9 +50,10 @@
 	}
 }
 
-@media screen and (max-width: $mobile) {
+@media screen and (max-width: $tablet) {
 	#visual {
 		height: calc(100vh - 100px);
+
 		.txt {
 			h1 {
 				font-size: 12vw;

@@ -2,63 +2,79 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 ul,
 ol,
 li {
-  list-style: none; }
+  list-style: none;
+}
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 header {
   width: 100%;
   height: 120px;
-  padding: 50px 10% 0;
+  padding: 50px 10% 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #ddd; }
-  header h1 a {
-    font: bold 24px/1 'arial';
-    color: #333; }
-  header ul {
-    display: flex;
-    gap: 20px; }
-    header ul#gnb {
-      gap: 40px; }
-      header ul#gnb a {
-        font: bold 14px/1 'arial';
-        color: #777; }
-    header ul.sns a {
-      font-size: 20px;
-      color: #888; }
-  header .btnCall {
-    display: none; }
+  border-bottom: 1px solid #ddd;
+}
+header h1 a {
+  font: bold 24px/1 "arial";
+  color: #333;
+}
+header ul {
+  display: flex;
+  gap: 20px;
+}
+header ul#gnb {
+  gap: 40px;
+}
+header ul#gnb a {
+  font: bold 14px/1 "arial";
+  color: #777;
+}
+header ul.sns a {
+  font-size: 20px;
+  color: #888;
+}
+header .btnCall {
+  display: none;
+}
 
 /*
   [ 반응형 구현 ]
-  - 모바일 구문에서 꼭 수정해야 하는 것
-    - 넓이값이 고정 px인 요소는 가로 폭이 100%가 되도록 변환
+  모바일 구문에서 꼭 수정해야 하는 것
+    - 넓이값이 고정 px인 요소는 가로 폭이 100%가 되도록 퍼센트로 변환
     - 높이값은 고정 px값이라도 상관없음
-    - 가능한 세로관련 높이값과 여백을 줄이는 것을 추천
+    - 그러나 가능한 세로관련 높이값과 여백을 줄이는 것을 추천
 */
 @media screen and (max-width: 999px) {
   header {
     height: 100px;
-    padding: 10px 10% 10px; }
-    header h1 {
-      position: relative;
-      top: -2px; }
-      header h1 a {
-        font: bold 20px/1 'arial'; }
-    header ul {
-      display: none; }
-    header .btnCall {
-      display: block;
-      font-size: 20px;
-      color: #444; } }
+    padding: 10px 10%;
+  }
+  header h1 {
+    position: relative;
+    top: -2px;
+  }
+  header h1 a {
+    font: bold 20px/1 "arial";
+  }
+  header ul {
+    display: none;
+  }
+  header .btnCall {
+    display: block;
+    font-size: 20px;
+    color: #444;
+  }
+}
 #visual {
   width: 100%;
   height: calc(100vh - 120px);
@@ -66,91 +82,121 @@ header {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0 10%; }
-  #visual video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.3; }
-  #visual .txt {
-    position: relative; }
-    #visual .txt h1 {
-      font-size: 8vw;
-      font-weight: normal;
-      line-height: 1;
-      color: #fff;
-      margin-bottom: 20px; }
-    #visual .txt p {
-      width: 70%;
-      font: 20px/1.2 'arial';
-      color: #888;
-      margin-bottom: 80px; }
-    #visual .txt a {
-      display: inline-block;
-      width: 300px;
-      height: 30px;
-      font: 11px/30px 'arial';
-      color: #bbb;
-      border: 1px solid #bbb;
-      text-align: center; }
+  padding: 0 10%;
+}
+#visual video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+#visual .txt {
+  position: relative;
+  /*
+  	%는 부모요소 기준으로 적용
+  	vw, vh는 viewport 기준으로 적용
+  */
+}
+#visual .txt h1 {
+  font-size: 8vw;
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 20px;
+}
+#visual .txt p {
+  width: 70%;
+  font: 20px/1.2 "arial";
+  color: #888;
+  margin-bottom: 80px;
+}
+#visual .txt a {
+  display: inline-block;
+  width: 300px;
+  height: 30px;
+  font: 11px/30px "arial";
+  color: #bbb;
+  border: 1px solid #bbb;
+  text-align: center;
+}
 
-@media screen and (max-width: 639px) {
+@media screen and (max-width: 999px) {
   #visual {
-    height: calc(100vh - 100px); }
-    #visual .txt h1 {
-      font-size: 12vw; }
-    #visual .txt p {
-      width: 100%; }
-    #visual .txt a {
-      width: 100%; } }
+    height: calc(100vh - 100px);
+  }
+  #visual .txt h1 {
+    font-size: 12vw;
+  }
+  #visual .txt p {
+    width: 100%;
+  }
+  #visual .txt a {
+    width: 100%;
+  }
+}
 #vids {
   width: 100%;
-  padding: 250px 10% 200px; }
-  #vids h1 {
-    font: bold 22px/1 'arial';
-    color: #444;
-    text-align: center;
-    margin-bottom: 50px; }
-  #vids .wrap {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px; }
-    #vids .wrap article {
-      flex: 1; }
-      #vids .wrap article .pic {
-        width: 100%;
-        height: 130px;
-        margin-bottom: 15px; }
-        #vids .wrap article .pic img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover; }
-      #vids .wrap article h2 {
-        font: bold 16px/1 'arial';
-        color: #555;
-        margin-bottom: 10px; }
-      #vids .wrap article p {
-        font: 13px/1.3 'arial';
-        color: #888; }
+  padding: 250px 10% 200px;
+}
+#vids h1 {
+  font: bold 22px/1 "arial";
+  color: #444;
+  text-align: center;
+  margin-bottom: 50px;
+}
+#vids .wrap {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+#vids .wrap article {
+  flex: 1;
+  width: 100%;
+}
+#vids .wrap article .pic {
+  width: 100%;
+  height: 130px;
+  margin-bottom: 15px;
+}
+#vids .wrap article .pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#vids .wrap article h2 {
+  font: bold 16px/1 "arial";
+  color: #555;
+  margin-bottom: 10px;
+}
+#vids .wrap article p {
+  font: 14px/1.3 "arial";
+  color: #888;
+}
 
 @media screen and (max-width: 999px) {
   #vids {
-    padding: 180px 10% 150px; }
-    #vids .wrap {
-      gap: 20px; }
-      #vids .wrap article {
-        flex: none;
-        width: calc(50% - 10px); } }
+    padding: 180px 10% 150px;
+  }
+  #vids .wrap {
+    gap: 20px;
+  }
+  #vids .wrap article {
+    flex: none;
+    width: calc(50% - 10px);
+  }
+}
 @media screen and (max-width: 639px) {
   #vids {
-    padding: 140px 10% 120px; }
-    #vids .wrap article {
-      width: 100%;
-      margin-bottom: 30px; } }
+    padding: 140px 10% 120px;
+  }
+  #vids .wrap article {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
