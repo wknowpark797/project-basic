@@ -48,7 +48,7 @@
 	}
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: $mobile) {
 	#visual {
 		height: calc(100vh - 100px);
 		.txt {

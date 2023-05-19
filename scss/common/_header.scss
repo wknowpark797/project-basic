@@ -46,7 +46,7 @@ header {
     - 높이값은 고정 px값이라도 상관없음
     - 가능한 세로관련 높이값과 여백을 줄이는 것을 추천
 */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: $tablet) {
 	header {
 		height: 100px;
 		padding: 10px 10% 10px;
