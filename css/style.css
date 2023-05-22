@@ -248,5 +248,28 @@ header {
       width: 100%; }
     #pics .wrap .right article:nth-of-type(2) {
       width: 100%; } }
+#banner {
+  width: 100%;
+  height: 40vh;
+  background: #111;
+  padding: 0 10%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  background: url(../img/banner.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed; }
+  #banner h1 {
+    font: bold 24px/1 'arial';
+    color: #fff; }
+  #banner p {
+    width: 100%;
+    font: 12px/1.2 'arial';
+    color: #ccc; }
 
 /*# sourceMappingURL=style.css.map */
