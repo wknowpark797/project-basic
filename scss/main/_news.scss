@@ -11,20 +11,67 @@
 
 	ul {
 		width: 100%;
+		position: relative;
+
+		&::before {
+			content: '';
+			display: block;
+			width: 1px;
+			height: 100%;
+			background: #aaa;
+			position: absolute;
+			top: 0;
+			left: 50%;
+		}
+
+		&::after {
+			content: '';
+			display: block;
+			clear: both;
+		}
 
 		li {
-			width: 100%;
+			width: calc(50% - 20px);
 			padding: 20px 30px;
 			background: #fff;
-			margin-bottom: 20px;
+			margin-bottom: 30px;
 			display: flex;
 			flex-wrap: wrap;
 			align-content: center;
-			justify-content: space-between;
+			justify-content: flex-start;
+			position: relative;
+
+			&::before {
+				content: '';
+				display: block;
+				width: 20px;
+				height: 1px;
+				background: #aaa;
+				position: absolute;
+				top: 50%;
+			}
+
+			&:nth-of-type(odd) {
+				float: left;
+				&::before {
+					right: -20px;
+				}
+			}
+			&:nth-of-type(even) {
+				float: right;
+				transform: translateY(50%);
+				justify-content: flex-end;
+				text-align: right;
+				&::before {
+					left: -20px;
+				}
+			}
 
 			a {
+				width: 100%;
 				font: 14px/1.2 'arial';
 				color: #777;
+				margin-bottom: 10px;
 			}
 
 			span {
