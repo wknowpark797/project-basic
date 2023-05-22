@@ -3,8 +3,8 @@
 	padding: 200px 10% 150px;
 	background: #efefef;
 
-	// margin: 0 auto; 블록 요소 자체 가운데 정렬
-	// text-align: center; 블록 요소 내부 요소 가운데 정렬
+	// margin: 0 auto; 블록 요소 자체를 가운데 정렬
+	// text-align: center; 블록 요소의 내부 요소를 가운데 정렬
 	h1 {
 		text-align: center;
 		margin-bottom: 50px;
@@ -72,7 +72,7 @@
 				object-fit: cover;
 			}
 
-			// nth-of-type와 nth-child의 차이점
+			// nth-of-type과 nth-child의 차이점
 			article:nth-of-type(1) {
 				width: calc(50% - 10px);
 				height: calc(50% - 10px);
