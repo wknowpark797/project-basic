@@ -1,0 +1,53 @@
+#pics {
+	width: 100%;
+	padding: 200px 10% 150px;
+	background: #efefef;
+
+	// margin: 0 auto; 블록 요소 자체 가운데 정렬
+	// text-align: center; 블록 요소 내부 요소 가운데 정렬
+	h1 {
+		text-align: center;
+		margin-bottom: 50px;
+	}
+
+	.wrap {
+		width: 100%;
+		height: 60vh;
+		display: flex;
+		justify-content: space-between;
+
+		.left {
+			width: 30%;
+			height: 100%;
+			background: #333;
+		}
+
+		.right {
+			width: calc(70% - 20px);
+			height: 100%;
+			background: lightcyan;
+			display: flex;
+			flex-wrap: wrap;
+			align-content: space-between;
+			justify-content: space-between;
+			gap: 20px;
+
+			// nth-of-type와 nth-child의 차이점
+			article:nth-of-type(1) {
+				width: calc(50% - 10px);
+				height: calc(50% - 10px);
+				background: #555;
+			}
+			article:nth-of-type(2) {
+				width: calc(50% - 10px);
+				height: calc(50% - 10px);
+				background: #555;
+			}
+			article:nth-of-type(3) {
+				width: 100%;
+				height: calc(50% - 10px);
+				background: #555;
+			}
+		}
+	}
+}
