@@ -39,3 +39,17 @@ footer {
 		}
 	}
 }
+
+@media screen and (max-width: $mobile) {
+	footer {
+		.upper {
+			flex-wrap: wrap;
+			justify-content: flex-start;
+
+			h1 {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+		}
+	}
+}

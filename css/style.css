@@ -87,6 +87,13 @@ footer {
       footer .lower p:last-child {
         margin-top: 20px; }
 
+@media screen and (max-width: 639px) {
+  footer .upper {
+    flex-wrap: wrap;
+    justify-content: flex-start; }
+    footer .upper h1 {
+      width: 100%;
+      margin-bottom: 10px; } }
 #visual {
   width: 100%;
   height: calc(100vh - 120px);
