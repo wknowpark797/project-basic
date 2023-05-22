@@ -81,3 +81,30 @@
 		}
 	}
 }
+
+@media screen and (max-width: $mobile) {
+	#news {
+		padding: 120px 10% 80px;
+
+		ul {
+			&::before {
+				display: none;
+			}
+
+			li {
+				width: 100%;
+
+				&::before {
+					display: none;
+				}
+
+				&:nth-of-type(even) {
+					float: left;
+					transform: translateY(0);
+					justify-content: flex-start;
+					text-align: left;
+				}
+			}
+		}
+	}
+}

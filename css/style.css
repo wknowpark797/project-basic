@@ -334,4 +334,19 @@ header {
         font: 14px/1 'arial';
         color: orange; }
 
+@media screen and (max-width: 639px) {
+  #news {
+    padding: 120px 10% 80px; }
+    #news ul::before {
+      display: none; }
+    #news ul li {
+      width: 100%; }
+      #news ul li::before {
+        display: none; }
+      #news ul li:nth-of-type(even) {
+        float: left;
+        transform: translateY(0);
+        justify-content: flex-start;
+        text-align: left; } }
+
 /*# sourceMappingURL=style.css.map */
