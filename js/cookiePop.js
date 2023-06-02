@@ -26,17 +26,38 @@ const pop = document.querySelector('#pop');
 const checkInput = pop.querySelector('#ck');
 const btnClose = pop.querySelector('.close');
 
-setCookie('today', 'done', 1);
+// 브라우저 로딩 시 쿠키 유무에 따라 팝업 노출
+const cookieData = document.cookie;
+if (cookieData.indexOf('today=done') < 0) {
+	// 쿠키가 없을 때 실행
+	pop.style.display = 'block';
+} else {
+	// 쿠키가 있을 때 실행
+	pop.style.display = 'none';
+}
 
+// 쿠키 확인
 btnShow.addEventListener('click', (e) => {
 	e.preventDefault();
 	console.log(document.cookie);
 });
 
+// 쿠키 삭제
 btnDelete.addEventListener('click', (e) => {
 	e.preventDefault();
 	setCookie('today', 'done', 0);
 	alert('쿠키삭제 완료');
+});
+
+// 팝업 닫기
+btnClose.addEventListener('click', (e) => {
+	e.preventDefault();
+
+	// 체크박스 선택 - 쿠키 생성
+	if (checkInput.checked) {
+		setCookie('today', 'done', 1);
+	}
+	pop.style.display = 'none';
 });
 
 function setCookie(name, value, expires) {
