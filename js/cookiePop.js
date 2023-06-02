@@ -25,3 +25,25 @@ const btnDelete = document.querySelectorAll('header #gnb li')[0];
 const pop = document.querySelector('#pop');
 const checkInput = pop.querySelector('#ck');
 const btnClose = pop.querySelector('.close');
+
+setCookie('today', 'done', 1);
+
+btnShow.addEventListener('click', (e) => {
+	e.preventDefault();
+	console.log(document.cookie);
+});
+
+btnDelete.addEventListener('click', (e) => {
+	e.preventDefault();
+	setCookie('today', 'done', 0);
+	alert('쿠키삭제 완료');
+});
+
+function setCookie(name, value, expires) {
+	let today = new Date();
+	let duedate = today.getDate() + expires; // 오늘 날짜값 + 1 (만료기간 설정)
+	today.setDate(duedate);
+	const result = today.toGMTString(); // 문자로 변환
+
+	document.cookie = `${name}=${value}; path=/; expires=${result}`;
+}
