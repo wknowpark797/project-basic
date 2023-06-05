@@ -19,8 +19,8 @@
 */
 
 // 임시 트리거 설정 (로고, 첫번째 메뉴)
-const btnShow = document.querySelector('header h1');
-const btnDelete = document.querySelectorAll('header #gnb li')[0];
+const btnShow = document.querySelectorAll('header .sns li')[0];
+const btnDelete = document.querySelectorAll('header .sns li')[1];
 
 const pop = document.querySelector('#pop');
 const checkInput = pop.querySelector('#ck');
