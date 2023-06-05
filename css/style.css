@@ -46,6 +46,17 @@ header ul.sns a {
 header .btnCall {
   display: none;
 }
+header.header-main {
+  position: absolute;
+  border-bottom: none;
+  z-index: 2;
+}
+header.header-main h1 a,
+header.header-main ul#gnb a,
+header.header-main ul.sns a,
+header.header-main .btnCall {
+  color: #fff;
+}
 
 /*
   [ 반응형 구현 ]
@@ -157,7 +168,7 @@ footer .lower p:last-child {
 }
 #visual {
   width: 100%;
-  height: calc(100vh - 120px);
+  height: 100vh;
   background: #111;
   position: relative;
   display: flex;
