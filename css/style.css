@@ -594,4 +594,15 @@ footer .lower p:last-child {
   color: #555;
 }
 
+@media screen and (max-width: 999px) {
+  .department .inner .wrap article {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 639px) {
+  .department .inner .wrap article {
+    width: 100%;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
