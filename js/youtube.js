@@ -38,9 +38,15 @@ fetch(url)
 			tags += `
         <article>
           <h2>${tit.length > 50 ? tit.substr(0, 50) + '...' : tit}</h2>
-          <img src="${item.snippet.thumbnails.standard.url}" />
-          <p>${desc.length > 200 ? desc.substr(0, 200) + '...' : desc}</p>
-          <span>${date.split('T')[0].split('-').join('.')}</span>
+
+          <div class="txt">
+            <p>${desc.length > 200 ? desc.substr(0, 200) + '...' : desc}</p>
+            <span>${date.split('T')[0].split('-').join('.')}</span>
+          </div>
+          
+          <div class="pic">
+            <img src="${item.snippet.thumbnails.standard.url}" />
+          </div>
         </article>
       `;
 		});

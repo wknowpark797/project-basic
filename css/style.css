@@ -604,5 +604,35 @@ footer .lower p:last-child {
     width: 100%;
   }
 }
+.youtube .inner .wrap article {
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+.youtube .inner .wrap article::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.youtube .inner .wrap article h2 {
+  float: left;
+  width: 24%;
+  padding-right: 20px;
+}
+.youtube .inner .wrap article .txt {
+  float: left;
+  width: 46%;
+  padding-right: 20px;
+}
+.youtube .inner .wrap article .pic {
+  float: left;
+  width: 30%;
+  height: 150px;
+}
+.youtube .inner .wrap article .pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 /*# sourceMappingURL=style.css.map */
