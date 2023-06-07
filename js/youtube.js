@@ -5,6 +5,8 @@
   - 해당 API 요청 url로 fetch 함수를 이용하여 데이터를 받은 뒤, 배열값만 출력
 */
 
+const wrap = document.querySelector('.youtube .wrap');
+
 const key = 'AIzaSyDwb_57BfoNHLxlZ-Mwn2O3VNVt2tFNNMw';
 const list = 'PLEJLcTMBRARfXocKJpD9DCEBS1kUxA7jl';
 const num = 10;
@@ -16,4 +18,18 @@ fetch(url)
 	})
 	.then((data) => {
 		console.log(data.items);
+
+		let tags = '';
+		data.items.forEach((item) => {
+			tags += `
+        <article>
+          <h2>${item.snippet.title}</h2>
+          <img src="${item.snippet.thumbnails.standard.url}" />
+          <p>${item.snippet.description}</p>
+          <span>${item.snippet.publishedAt}</span>
+        </article>
+      `;
+		});
+
+		wrap.innerHTML = tags;
 	});
