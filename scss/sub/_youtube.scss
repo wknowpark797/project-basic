@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&family=Orbitron:wght@400;500&family=Work+Sans:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
 
 .youtube {
 	.inner {
@@ -16,14 +16,15 @@
 
 				h2 {
 					float: left;
-					width: 24%;
+					width: 40%;
 					padding-right: 20px;
-					font: normal 35px/1 'noto sans';
+					font: 100 38px/1 'Noto Sans KR';
+					color: #111;
 				}
 
 				.txt {
 					float: left;
-					width: 46%;
+					width: 30%;
 					padding-right: 20px;
 
 					p {
@@ -41,7 +42,7 @@
 				.pic {
 					float: left;
 					width: 30%;
-					height: 150px;
+					height: 180px;
 
 					img {
 						width: 100%;
@@ -92,6 +93,11 @@
 
 					.txt {
 						width: 100%;
+					}
+
+					.pic {
+						width: 100%;
+						margin-top: 20px;
 					}
 				}
 			}

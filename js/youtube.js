@@ -20,60 +20,63 @@
   - Event Delegate
   - 현재 없는 요소에 이벤트를 전달하기 위해 항상 있는 상위 부모요소에 이벤트를 위임
     (이벤트 버블링을 활용한 개념)
+    -> 실무에서 body 태그에 이벤트를 위임하는 경우가 많다.
 */
 
 /*
   [ e.target vs e.currentTarget ]
   - e.target
     - 현재 이벤트 구문상에 선택자로 연결되어 있는 요소를 지칭
+    - ex. 이미지 태그
   - e.currentTarget
     - 화면상에서 이벤트가 발생한 대상을 지칭
+    - ex. wrap 클래스 태그
+*/
+
+/*
+  [ 함수 분리 전 fetch 코드 ]
+
+  fetch(url)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      let tags = '';
+      data.items.forEach((item) => {
+        let tit = item.snippet.title;
+        let desc = item.snippet.description;
+        let date = item.snippet.publishedAt;
+
+        tags += `
+          <article>
+            <h2>${tit.length > 50 ? tit.substr(0, 50) + '...' : tit}</h2>
+
+            <div class="txt">
+              <p>${desc.length > 200 ? desc.substr(0, 200) + '...' : desc}</p>
+              <span>${date.split('T')[0].split('-').join('.')}</span>
+            </div>
+            
+            <div class="pic">
+              <img src="${item.snippet.thumbnails.standard.url}" alt=${
+          item.snippet.resourceId.videoId
+        } />
+            </div>
+          </article>
+        `;
+      });
+
+      wrap.innerHTML = tags;
+
+      // then 구문 안쪽에서 동기적으로 DOM 요소가 동적으로 생성된 이후에만 해당 요소에 접근 가능
+      // 이벤트 위임으로 then 구문 밖에서 사용할 수 있다.
+      const pic = wrap.querySelectorAll('pic')[0];
+      pic.addEventListener('click', () => {
+        console.log('clicked');
+      });
+    });
 */
 
 const wrap = document.querySelector('.youtube .wrap');
-
-/*
-fetch(url)
-	.then((res) => {
-		return res.json();
-	})
-	.then((data) => {
-		console.log(data.items);
-
-		let tags = '';
-		data.items.forEach((item) => {
-			let tit = item.snippet.title;
-			let desc = item.snippet.description;
-			let date = item.snippet.publishedAt;
-
-			tags += `
-        <article>
-          <h2>${tit.length > 50 ? tit.substr(0, 50) + '...' : tit}</h2>
-
-          <div class="txt">
-            <p>${desc.length > 200 ? desc.substr(0, 200) + '...' : desc}</p>
-            <span>${date.split('T')[0].split('-').join('.')}</span>
-          </div>
-          
-          <div class="pic">
-            <img src="${item.snippet.thumbnails.standard.url}" alt=${
-				item.snippet.resourceId.videoId
-			} />
-          </div>
-        </article>
-      `;
-		});
-
-		wrap.innerHTML = tags;
-
-    // then 구문 안쪽에서 동기적으로 DOM 요소가 동적으로 생성된 이후에만 해당 요소에 접근 가능
-    // 이벤트 위임으로 then 구문 밖에서 사용할 수 있다.
-    const pic = wrap.querySelectorAll('pic')[0];
-    pic.addEventListener('click', () => {
-      console.log('clicked');
-    });
-	});
-*/
 
 fetchData();
 
@@ -125,15 +128,6 @@ function createList(arr) {
 	});
 
 	wrap.innerHTML = tags;
-
-	/*
-    // then 구문 안쪽에서 동기적으로 DOM 요소가 동적으로 생성된 이후에만 해당 요소에 접근 가능
-    // 이벤트 위임으로 then 구문 밖에서 사용할 수 있다.
-    const pic = wrap.querySelectorAll('pic')[0];
-    pic.addEventListener('click', () => {
-      console.log('clicked');
-    });
-  */
 }
 
 /*
