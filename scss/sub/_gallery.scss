@@ -36,3 +36,23 @@
 		}
 	}
 }
+
+@media screen and (max-width: $tablet) {
+	.gallery {
+		.wrap {
+			li {
+				width: calc(100% / 2);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.gallery {
+		.wrap {
+			li {
+				width: calc(100% / 1);
+			}
+		}
+	}
+}
