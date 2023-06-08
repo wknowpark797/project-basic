@@ -82,7 +82,7 @@ fetchData();
 
 // 이벤트 위임
 document.body.addEventListener('click', (e) => {
-	if (e.target.className === 'thumb') createPop();
+	if (e.target.className === 'thumb') createPop(e.target.getAttribute('alt'));
 	if (e.target.className === 'close') removePop();
 });
 
@@ -140,9 +140,11 @@ function createList(arr) {
 */
 
 // 동적으로 팝업 생성 함수
-function createPop() {
+function createPop(id) {
 	const tags = `
-    <div class="con"></div>
+    <div class="con">
+      <iframe src="https://www.youtube.com/embed/${id}"></iframe>
+    </div>
     <span class="close">close</span>
   `;
 

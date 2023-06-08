@@ -186,6 +186,14 @@ footer .lower p:last-child {
   width: 100%;
   height: 100%;
 }
+.pop .con iframe,
+.pop .con video,
+.pop .con img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
 .pop .close {
   font: bold 14px/1 "arial";
   color: #fff;
