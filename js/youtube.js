@@ -154,9 +154,15 @@ function createPop(id) {
 
 	document.body.append(pop);
 
-	// 동기화 시켜야 하는 코드에 Promise 객체를 만드는 대신 setTimeout 사용 가능
-	// 특정 코드를 강제로 동기화 시키고 싶을 때 setTimeout에 delay를 0으로 지정하여 코드를 패키징 (강제로 WEB API에 전달되었다가 다시 callstack의 마지막에 등록)
-	// 팝업이 생성된 후 on 클래스가 생기도록 하기 위함
+	/*
+    - 동기화 시켜야 하는 코드에 Promise 객체 대신 setTimeout 사용이 가능하다.
+    - 특정 코드를 강제로 동기화 시키고 싶을 때 setTimeout에 delay를 0초로 지정하여 코드를 패키징 한다.
+      -> 강제로 WEB API에 전달된 후 다시 callstack의 마지막에 등록된다.
+
+    - 팝업이 생성된 후 팝업에 on 클래스가 생기도록 하기 위함
+      -> 팝업을 열거나 닫을 때 모션이 정상적으로 작동
+      -> 팝업의 생성과 on 클래스 추가 로직의 실행 순서 문제로 발생하는 모션 오류 방지
+  */
 	setTimeout(() => {
 		document.querySelector('.pop').classList.add('on');
 	}, 0);
