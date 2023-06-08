@@ -82,9 +82,8 @@ fetchData();
 
 // 이벤트 위임
 document.body.addEventListener('click', (e) => {
-	if (e.target.className !== 'thumb') return;
-	console.log(e.target.getAttribute('alt'));
-	createPop();
+	if (e.target.className === 'thumb') createPop();
+	if (e.target.className === 'close') removePop();
 });
 
 // 데이터 fetching 함수
@@ -152,4 +151,11 @@ function createPop() {
 	pop.innerHTML = tags;
 
 	document.body.append(pop);
+	document.body.style.overflow = 'hidden';
+}
+
+// 팝업 제거 함수
+function removePop() {
+	document.querySelector('.pop').remove();
+	document.body.style.overflow = 'auto';
 }
