@@ -718,7 +718,6 @@ footer .lower p:last-child {
 }
 .gallery {
   width: 100%;
-  padding: 50px;
   overflow: hidden;
 }
 .gallery .wrap::after {
@@ -734,7 +733,8 @@ footer .lower p:last-child {
 .gallery .wrap li > div {
   width: 100%;
   background: #fff;
-  padding: 20px;
+  padding: 10px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.05);
 }
 .gallery .wrap li > div img {
   width: 100%;

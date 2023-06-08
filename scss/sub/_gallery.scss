@@ -2,7 +2,6 @@
 
 .gallery {
 	width: 100%;
-	padding: 50px;
 	overflow: hidden;
 
 	.wrap {
@@ -20,7 +19,8 @@
 			> div {
 				width: 100%;
 				background: #fff;
-				padding: 20px;
+				padding: 10px;
+				box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.05);
 
 				img {
 					width: 100%;
