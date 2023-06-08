@@ -81,9 +81,10 @@ const wrap = document.querySelector('.youtube .wrap');
 fetchData();
 
 // 이벤트 위임
-wrap.addEventListener('click', (e) => {
-	if (e.target.nodeName !== 'IMG') return;
+document.body.addEventListener('click', (e) => {
+	if (e.target.className !== 'thumb') return;
 	console.log(e.target.getAttribute('alt'));
+	createPop();
 });
 
 // 데이터 fetching 함수
@@ -93,6 +94,7 @@ async function fetchData() {
 	const num = 10;
 	const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${list}&key=${key}&maxResults=${num}`;
 
+	// Promise 반환 함수에 await 키워드
 	const res = await fetch(url);
 	const data = await res.json();
 	console.log(data.items);
@@ -119,7 +121,7 @@ function createList(arr) {
         </div>
         
         <div class="pic">
-          <img src="${item.snippet.thumbnails.standard.url}" alt=${
+          <img class="thumb" src="${item.snippet.thumbnails.standard.url}" alt=${
 			item.snippet.resourceId.videoId
 		} />
         </div>
@@ -137,3 +139,17 @@ function createList(arr) {
     console.log('clicked');
   });
 */
+
+// 동적으로 팝업 생성 함수
+function createPop() {
+	const tags = `
+    <div class="con"></div>
+    <span class="close">close</span>
+  `;
+
+	const pop = document.createElement('aside');
+	pop.className = 'pop';
+	pop.innerHTML = tags;
+
+	document.body.append(pop);
+}
