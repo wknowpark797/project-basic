@@ -6,7 +6,13 @@
 	top: 0;
 	left: 0;
 	padding: 100px;
-	z-index: 5;
+	z-index: 5; // z-index가 있다면 transition 동작 X
+	opacity: 0;
+	transition: opacity 0.5s;
+
+	&.on {
+		opacity: 1;
+	}
 
 	.con {
 		width: 100%;

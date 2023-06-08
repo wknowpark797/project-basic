@@ -151,11 +151,25 @@ function createPop() {
 	pop.innerHTML = tags;
 
 	document.body.append(pop);
+
+	// 동기화 시켜야 하는 코드에 Promise 객체를 만드는 대신 setTimeout 사용 가능
+	// 특정 코드를 강제로 동기화 시키고 싶을 때 setTimeout에 delay를 0으로 지정하여 코드를 패키징 (강제로 WEB API에 전달되었다가 다시 callstack의 마지막에 등록)
+	// 팝업이 생성된 후 on 클래스가 생기도록 하기 위함
+	setTimeout(() => {
+		document.querySelector('.pop').classList.add('on');
+	}, 0);
+
 	document.body.style.overflow = 'hidden';
 }
 
 // 팝업 제거 함수
 function removePop() {
-	document.querySelector('.pop').remove();
+	document.querySelector('.pop').classList.remove('on');
+
+	// on 클래스를 제거한 후 팝업이 사라지도록 하기 위함
+	setTimeout(() => {
+		document.querySelector('.pop').remove();
+	}, 1000);
+
 	document.body.style.overflow = 'auto';
 }
