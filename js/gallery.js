@@ -1,14 +1,18 @@
 const wrap = document.querySelector('.gallery .wrap');
 const loading = document.querySelector('.gallery .loading');
-
 const api_key = '7f259a4112d06fbef0736c84af20f014';
-const method_interest = 'flickr.interestingness.getList';
 const num = 30;
+const myId = '198471371@N05';
 
 // nojsoncallback: 객체가 아닌 함수 형태일 때
-const baseURL = `https://www.flickr.com/services/rest/?method=${method_interest}&api_key=${api_key}&format=json&nojsoncallback=1&per_page=${num}`;
+const baseURL = `https://www.flickr.com/services/rest/?format=json&nojsoncallback=1&api_key=${api_key}&per_page=${num}&method=`;
 
-fetch(baseURL)
+const method_interest = 'flickr.interestingness.getList';
+const method_user = 'flickr.people.getPhotos';
+const interestURL = `${baseURL}${method_interest}`;
+const userURL = `${baseURL}${method_user}&user_id=${myId}`;
+
+fetch(userURL)
 	.then((res) => {
 		return res.json();
 	})
