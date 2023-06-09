@@ -5,6 +5,33 @@
 	overflow: hidden;
 	position: relative;
 
+	.search-box {
+		width: 100%;
+		padding: 50px 10px 20px;
+		font-size: 0;
+
+		input {
+			width: 250px;
+			height: 30px;
+			background: #fff;
+			border: 1px solid #ddd;
+			padding-left: 10px;
+		}
+
+		.btn-search {
+			width: 80px;
+			height: 29px;
+			background: #333;
+			color: #fff;
+			font: bold 12px/29px 'arial';
+			text-align: center;
+			border: none;
+			cursor: pointer;
+			margin-left: 5px;
+			transform: translateY(-1px);
+		}
+	}
+
 	.loading {
 		position: absolute;
 		top: 0;
@@ -60,7 +87,15 @@
 					width: 100%;
 
 					img {
-						width: 40px;
+						width: 36px;
+					}
+
+					span {
+						display: inline-block;
+						font: 12px/1 'arial';
+						color: orange;
+						margin-left: 5px;
+						transform: translateY(-10px);
 					}
 				}
 			}
