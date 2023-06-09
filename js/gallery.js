@@ -27,7 +27,7 @@ fetch(userURL)
         <li class="item">
           <div>
             <a href="https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg">
-              <img src="https://live.staticflickr.com/${item.server}/${item.id}_${
+              <img class="pic" src="https://live.staticflickr.com/${item.server}/${item.id}_${
 				item.secret
 			}_m.jpg" />
             </a>
@@ -60,6 +60,15 @@ fetch(userURL)
 		}
 	});
 
+document.body.addEventListener('click', (e) => {
+	e.preventDefault();
+	if (e.target.className === 'pic') {
+		const imgSrc = e.target.closest('a').getAttribute('href');
+		createPop(imgSrc);
+	}
+	if (e.target.className === 'close') removePop();
+});
+
 function isoLayout() {
 	new Isotope(wrap, {
 		itemSelector: '.item',
@@ -68,4 +77,27 @@ function isoLayout() {
 
 	wrap.classList.add('on');
 	loading.classList.add('off');
+}
+
+function createPop(src) {
+	const tags = `
+		<div class="con">
+			<img src="${src}" />
+		</div>
+		<span class="close">close</span>
+	`;
+
+	const aside = document.createElement('aside');
+	aside.classList.add('pop');
+	aside.innerHTML = tags;
+	document.body.append(aside);
+
+	setTimeout(() => {
+		aside.classList.add('on');
+	}, 0);
+}
+
+function removePop() {
+	const pop = document.querySelector('.pop');
+	pop.remove();
 }

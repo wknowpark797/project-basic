@@ -199,6 +199,9 @@ footer .lower p:last-child {
   object-fit: cover;
   border: none;
 }
+.pop .con img {
+  object-fit: contain;
+}
 .pop .close {
   font: bold 14px/1 "arial";
   color: #fff;
