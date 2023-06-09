@@ -1,7 +1,7 @@
 const wrap = document.querySelector('.gallery .wrap');
 const loading = document.querySelector('.gallery .loading');
 const api_key = '7f259a4112d06fbef0736c84af20f014';
-const num = 50;
+const num = 500;
 const myId = '198471371@N05';
 
 // nojsoncallback: 객체가 아닌 함수 형태일 때
@@ -56,6 +56,12 @@ fetch(interestURL)
 		let count = 0;
 
 		for (const el of imgArr) {
+			// 이미지의 엑박 오류 발생 시 onerror 이벤트로 잡아 디폴트 이미지로 대체
+			el.onerror = () => {
+				el.setAttribute('src', 'https://www.flickr.com/images/buddyicon.gif');
+			};
+
+			// 디폴트 이미지까지 포함하여 카운트 (무한로딩 오류 처리)
 			el.onload = () => {
 				count++; // 이미지 태그의 소스가 렌더링 완료될 때마다 증가
 				console.log(count);
