@@ -1,5 +1,8 @@
 const wrap = document.querySelector('.gallery .wrap');
 const loading = document.querySelector('.gallery .loading');
+const input = document.querySelector('.gallery #search');
+const btnSearch = document.querySelector('.gallery .btn-search');
+
 const api_key = '7f259a4112d06fbef0736c84af20f014';
 const num = 50;
 const myId = '198471371@N05';
@@ -9,10 +12,22 @@ const baseURL = `https://www.flickr.com/services/rest/?format=json&nojsoncallbac
 
 const method_interest = 'flickr.interestingness.getList';
 const method_user = 'flickr.people.getPhotos';
+const method_search = 'flickr.photos.search';
 const interestURL = `${baseURL}${method_interest}`;
 const userURL = `${baseURL}${method_user}&user_id=${myId}`;
 
 fetchData(interestURL);
+
+btnSearch.addEventListener('click', (e) => {
+	e.preventDefault();
+
+	loading.classList.remove('off');
+	wrap.classList.remove('on');
+
+	const value = input.value;
+	const searchURL = `${baseURL}${method_search}&tags=${value}`;
+	fetchData(searchURL);
+});
 
 async function fetchData(url) {
 	const res = await fetch(url);
@@ -72,7 +87,7 @@ function setLoading() {
 		// 디폴트 이미지까지 포함하여 카운트 (무한로딩 오류 처리)
 		el.onload = () => {
 			count++; // 이미지 태그의 소스가 렌더링 완료될 때마다 증가
-			console.log(count);
+			// console.log(count);
 
 			count === imgArr.length && isoLayout();
 		};

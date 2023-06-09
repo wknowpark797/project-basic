@@ -746,15 +746,17 @@ footer .lower p:last-child {
   transform: translateY(-1px);
 }
 .gallery .loading {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   opacity: 1;
-  transition: 1s;
+  transition: opacity 1s;
+  z-index: 3;
 }
 .gallery .loading.off {
   opacity: 0;
+  z-index: -1;
 }
 .gallery .wrap {
   opacity: 0;
