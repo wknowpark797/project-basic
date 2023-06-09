@@ -26,11 +26,9 @@ fetch(userURL)
 			tags += `
         <li class="item">
           <div>
-            <a href="https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg">
-              <img class="pic" src="https://live.staticflickr.com/${item.server}/${item.id}_${
+						<img class="pic" src="https://live.staticflickr.com/${item.server}/${item.id}_${
 				item.secret
-			}_m.jpg" />
-            </a>
+			}_m.jpg" alt="https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg" />
             <p>${item.title === '' ? 'Have a good day ~' : item.title}</p>
           </div>
         </li>
@@ -61,9 +59,8 @@ fetch(userURL)
 	});
 
 document.body.addEventListener('click', (e) => {
-	e.preventDefault();
 	if (e.target.className === 'pic') {
-		const imgSrc = e.target.closest('a').getAttribute('href');
+		const imgSrc = e.target.getAttribute('alt');
 		createPop(imgSrc);
 	}
 	if (e.target.className === 'close') removePop();
