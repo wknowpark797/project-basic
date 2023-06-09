@@ -757,7 +757,7 @@ footer .lower p:last-child {
   padding: 10px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.05);
 }
-.gallery .wrap li > div img {
+.gallery .wrap li > div .thumb {
   width: 100%;
 }
 .gallery .wrap li > div p {
@@ -765,6 +765,12 @@ footer .lower p:last-child {
   color: #777;
   margin-top: 10px;
   margin-bottom: 20px;
+}
+.gallery .wrap li > div .profile {
+  width: 100%;
+}
+.gallery .wrap li > div .profile img {
+  width: 40px;
 }
 
 @media screen and (max-width: 999px) {

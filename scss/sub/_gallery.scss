@@ -45,7 +45,7 @@
 				padding: 10px;
 				box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.05);
 
-				img {
+				.thumb {
 					width: 100%;
 				}
 
@@ -54,6 +54,14 @@
 					color: #777;
 					margin-top: 10px;
 					margin-bottom: 20px;
+				}
+
+				.profile {
+					width: 100%;
+
+					img {
+						width: 40px;
+					}
 				}
 			}
 		}

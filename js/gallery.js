@@ -1,7 +1,7 @@
 const wrap = document.querySelector('.gallery .wrap');
 const loading = document.querySelector('.gallery .loading');
 const api_key = '7f259a4112d06fbef0736c84af20f014';
-const num = 30;
+const num = 50;
 const myId = '198471371@N05';
 
 // nojsoncallback: 객체가 아닌 함수 형태일 때
@@ -12,7 +12,7 @@ const method_user = 'flickr.people.getPhotos';
 const interestURL = `${baseURL}${method_interest}`;
 const userURL = `${baseURL}${method_user}&user_id=${myId}`;
 
-fetch(userURL)
+fetch(interestURL)
 	.then((res) => {
 		return res.json();
 	})
@@ -27,11 +27,16 @@ fetch(userURL)
         <li class="item">
           <div>
             <a href="https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg">
-              <img src="https://live.staticflickr.com/${item.server}/${item.id}_${
+              <img class="thumb" src="https://live.staticflickr.com/${item.server}/${item.id}_${
 				item.secret
 			}_m.jpg" />
             </a>
             <p>${item.title === '' ? 'Have a good day ~' : item.title}</p>
+
+						<article class="profile">
+							<img src="http://farm${item.farm}.staticflickr.com/${item.server}/buddyicons/${item.owner}.jpg" />
+							<span>${item.owner}</span>
+						</article>
           </div>
         </li>
       `;
