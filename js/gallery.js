@@ -2,6 +2,8 @@ const wrap = document.querySelector('.gallery .wrap');
 const loading = document.querySelector('.gallery .loading');
 const input = document.querySelector('.gallery #search');
 const btnSearch = document.querySelector('.gallery .btn-search');
+const btnInterest = document.querySelector('.gallery .btn-interest');
+const btnMy = document.querySelector('.gallery .btn-my');
 
 const api_key = '7f259a4112d06fbef0736c84af20f014';
 const num = 50;
@@ -18,18 +20,22 @@ const userURL = `${baseURL}${method_user}&user_id=${myId}`;
 
 fetchData(interestURL);
 
-btnSearch.addEventListener('click', (e) => {
-	e.preventDefault();
+btnSearch.addEventListener('click', () => {
+	const value = input.value.trim(); // 양 옆의 공백 제거
+	input.value = '';
 
-	loading.classList.remove('off');
-	wrap.classList.remove('on');
+	if (value === '') return alert('검색어를 입력해주세요.');
 
-	const value = input.value;
 	const searchURL = `${baseURL}${method_search}&tags=${value}`;
 	fetchData(searchURL);
 });
+btnInterest.addEventListener('click', () => fetchData(interestURL));
+btnMy.addEventListener('click', () => fetchData(userURL));
 
 async function fetchData(url) {
+	loading.classList.remove('off');
+	wrap.classList.remove('on');
+
 	const res = await fetch(url);
 	const json = await res.json();
 	const items = json.photos.photo;
