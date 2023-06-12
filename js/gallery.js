@@ -25,7 +25,7 @@ btnSearch.addEventListener('click', getSearch);
 // 검색창 키보드 이벤트
 input.addEventListener('keypress', (e) => e.code === 'Enter' && getSearch());
 
-// 사용자 아이디 클릭 시 해당 갤러리 확인 이벤트
+// 이벤트 위임
 document.body.addEventListener('click', (e) => {
 	if (e.target.className === 'userid') fetchData(setURL('user', e.target.innerText));
 	if (e.target.className === 'thumb') createPop(e.target.getAttribute('alt'));
