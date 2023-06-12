@@ -8,7 +8,7 @@
   <title>Document</title>
   <script src="https://kit.fontawesome.com/57de64ccd3.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
-  <script defer src="js/home.js"></script>
+  <script defer src="js/form.js"></script>
 </head>
 
 <body>
@@ -54,8 +54,8 @@
 
       <!--
         [ Form ]
-        - form: 사용자의 값을 입력받기 위한 태그
-        - method
+        - form: 사용자의 입력값을 입력받기 위한 태그
+        - method (get, post)
           - get: url에 값을 담아 보낸다.
         - fieldset: form요소를 감싼다. (접근성)
         - legend: form의 제목으로 화면에는 보이지 않도록 처리 (접근성)
@@ -68,7 +68,7 @@
             <tbody>
               <!-- user id -->
               <tr>
-                <!-- scope: (접근성) 스크린 리더기가 가로로 읽는다. (row | column) -->
+                <!-- scope: (접근성) 스크린 리더기가 가로로 읽는다. [row | column] -->
                 <th scope="row">
                   <label for="userid">User ID</label>
                 </th>

@@ -1,11 +1,11 @@
 /*
   [ 진행 순서 ]
   
-  - form validation
+  - Form Validation
   1. submit 버튼에 form 전송 이벤트 연결
   2. 각 form 항목마다의 인증함수 정의
   3. 각 함수마다 인증여부에 따라 true, false 값 리턴
-  4. 전송 버튼 클릭 시 각 함수에서 하나라도 false 값 리턴 시 기본기능 막음
+  4. 전송 버튼 클릭 시 각 함수에서 하나라도 false 값 리턴 시 전송기능 막음
   
 */
 
@@ -27,7 +27,7 @@ function isText(name, length) {
 	const text = input.value.trim();
 
 	if (text.length < length) {
-		alert(`${length}글자 이상 입력하세요.`);
+		alert(`입력 항목에 ${length}글자 이상 입력하세요.`);
 		return false;
 	}
 
@@ -42,7 +42,7 @@ function isPwd(pwd1, pwd2, length) {
 	const pwdValue1 = form.querySelector(`[name=${pwd1}]`).value;
 	const pwdValue2 = form.querySelector(`[name=${pwd2}]`).value;
 
-	if (pwdValue1 !== pwdValue2 || pwdValue1 < length) {
+	if (pwdValue1 !== pwdValue2 || pwdValue1.length < length) {
 		alert(`두개의 비밀번호를 동일하게 입력하고 ${length}글자 이상 입력하세요.`);
 		return false;
 	}
