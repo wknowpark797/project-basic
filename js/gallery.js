@@ -9,39 +9,38 @@ const api_key = '7f259a4112d06fbef0736c84af20f014';
 const num = 50;
 const myId = '198471371@N05';
 
-// nojsoncallback: 객체가 아닌 함수 형태일 때
-const baseURL = `https://www.flickr.com/services/rest/?format=json&nojsoncallback=1&api_key=${api_key}&per_page=${num}&method=`;
-
-const method_interest = 'flickr.interestingness.getList';
-const method_user = 'flickr.people.getPhotos';
-const method_search = 'flickr.photos.search';
-const interestURL = `${baseURL}${method_interest}`;
-const userURL = `${baseURL}${method_user}&user_id=${myId}`;
-
-fetchData(interestURL);
+fetchData(setURL('interest'));
 
 btnSearch.addEventListener('click', () => {
 	const value = input.value.trim(); // 양 옆의 공백 제거
 	input.value = '';
 
 	if (value === '') return alert('검색어를 입력해주세요.');
-
-	const searchURL = `${baseURL}${method_search}&tags=${value}`;
-	fetchData(searchURL);
+	fetchData(setURL('search', value));
 });
 
 // 사용자 아이디 클릭 시 해당 갤러리 확인 이벤트
 wrap.addEventListener('click', (e) => {
 	if (e.target.className === 'userid') {
-		const userid = e.target.innerText;
-		console.log('userid: ', userid);
-		const userURL = `${baseURL}${method_user}&user_id=${userid}`;
-		fetchData(userURL);
+		fetchData(setURL('user', e.target.innerText));
 	}
 });
 
-btnInterest.addEventListener('click', () => fetchData(interestURL));
-btnMy.addEventListener('click', () => fetchData(userURL));
+btnInterest.addEventListener('click', () => fetchData(setURL('interest')));
+btnMy.addEventListener('click', () => fetchData(setURL('user', myId)));
+
+function setURL(type, opt) {
+	// nojsoncallback: 객체가 아닌 함수 형태일 때
+	const baseURL = `https://www.flickr.com/services/rest/?format=json&nojsoncallback=1&api_key=${api_key}&per_page=${num}&method=`;
+
+	const method_interest = 'flickr.interestingness.getList';
+	const method_user = 'flickr.people.getPhotos';
+	const method_search = 'flickr.photos.search';
+
+	if (type === 'interest') return `${baseURL}${method_interest}`;
+	if (type === 'search') return `${baseURL}${method_search}&tags=${opt}`;
+	if (type === 'user') return `${baseURL}${method_user}&user_id=${opt}`;
+}
 
 async function fetchData(url) {
 	loading.classList.remove('off');
