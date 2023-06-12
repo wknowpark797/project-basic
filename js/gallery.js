@@ -9,14 +9,23 @@ const api_key = '7f259a4112d06fbef0736c84af20f014';
 const num = 50;
 const myId = '198471371@N05';
 
+/*
+	[ Key Event ]
+	keydown: 키를 누를 때
+	keyup: 키를 뗄 때
+		- Mac OS에서 이벤트가 두번씩 발생
+	keypress: 키를 누른 후 뗄 때 (추천)
+		- 한자와 같은 특수 키 지원X
+*/
+
 fetchData(setURL('interest'));
 
-btnSearch.addEventListener('click', () => {
-	const value = input.value.trim(); // 양 옆의 공백 제거
-	input.value = '';
+btnSearch.addEventListener('click', getSearch);
 
-	if (value === '') return alert('검색어를 입력해주세요.');
-	fetchData(setURL('search', value));
+// 검색창 키보드 이벤트
+input.addEventListener('keypress', (e) => {
+	console.log(e);
+	if (e.code === 'Enter') getSearch();
 });
 
 // 사용자 아이디 클릭 시 해당 갤러리 확인 이벤트
@@ -40,6 +49,14 @@ function setURL(type, opt) {
 	if (type === 'interest') return `${baseURL}${method_interest}`;
 	if (type === 'search') return `${baseURL}${method_search}&tags=${opt}`;
 	if (type === 'user') return `${baseURL}${method_user}&user_id=${opt}`;
+}
+
+function getSearch() {
+	const value = input.value.trim(); // 양 옆의 공백 제거
+	input.value = '';
+
+	if (value === '') return alert('검색어를 입력해주세요.');
+	fetchData(setURL('search', value));
 }
 
 async function fetchData(url) {
