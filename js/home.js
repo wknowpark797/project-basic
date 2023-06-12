@@ -13,32 +13,64 @@ const form = document.querySelector('#member');
 const btnSubmit = form.querySelector('input[type=submit]');
 
 btnSubmit.addEventListener('click', (e) => {
-	if (!isUser()) e.preventDefault();
-	if (!isPwd()) e.preventDefault();
-	if (!isEmail()) e.preventDefault();
-	if (!isCheck()) e.preventDefault();
-	if (!isSelect()) e.preventDefault();
+	if (!isText('userid', 5)) e.preventDefault();
+	if (!isText('comments', 10)) e.preventDefault();
+	if (!isPwd('pwd1', 'pwd2', 4)) e.preventDefault();
+	if (!isEmail('email', 6)) e.preventDefault();
+	// if (!isCheck()) e.preventDefault();
+	// if (!isSelect()) e.preventDefault();
 });
 
-// userid 인증
-function isUser() {
+// 텍스트 항목 인증 (input, textarea)
+function isText(name, length) {
+	const input = form.querySelector(`[name=${name}]`);
+	const text = input.value.trim();
+
+	if (text.length < length) {
+		alert(`${length}글자 이상 입력하세요.`);
+		return false;
+	}
+
 	return true;
 }
 
-// password 인증
-function isPwd() {
+/*
+	password 인증
+	- 다섯글자 이상 입력, 두개의 비밀번호 일치
+*/
+function isPwd(pwd1, pwd2, length) {
+	const pwdValue1 = form.querySelector(`[name=${pwd1}]`).value;
+	const pwdValue2 = form.querySelector(`[name=${pwd2}]`).value;
+
+	if (pwdValue1 !== pwdValue2 || pwdValue1 < length) {
+		alert(`두개의 비밀번호를 동일하게 입력하고 ${length}글자 이상 입력하세요.`);
+		return false;
+	}
+
 	return true;
 }
 
-// email 인증
-function isEmail() {
+/*
+	email 인증
+	- 여섯글자 이상 입력, @ 포함
+*/
+function isEmail(name, length) {
+	const email = form.querySelector(`[name=${name}]`).value;
+
+	if (!email.indexOf('@') || email.length < length) {
+		alert(`이메일 주소에 @가 포함되어야 하고 ${length}글자 이상 입력하세요.`);
+		return false;
+	}
+
 	return true;
 }
 
-function isCheck() {
+// check 요소 인증
+function isCheck(name) {
 	return true;
 }
 
-function isSelect() {
+// select 요소 인증
+function isSelect(name) {
 	return true;
 }
