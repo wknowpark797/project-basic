@@ -29,6 +29,17 @@ btnSearch.addEventListener('click', () => {
 	const searchURL = `${baseURL}${method_search}&tags=${value}`;
 	fetchData(searchURL);
 });
+
+// 사용자 아이디 클릭 시 해당 갤러리 확인 이벤트
+wrap.addEventListener('click', (e) => {
+	if (e.target.className === 'userid') {
+		const userid = e.target.innerText;
+		console.log('userid: ', userid);
+		const userURL = `${baseURL}${method_user}&user_id=${userid}`;
+		fetchData(userURL);
+	}
+});
+
 btnInterest.addEventListener('click', () => fetchData(interestURL));
 btnMy.addEventListener('click', () => fetchData(userURL));
 
@@ -60,7 +71,7 @@ function createList(arr) {
 
 						<article class="profile">
 							<img src="http://farm${item.farm}.staticflickr.com/${item.server}/buddyicons/${item.owner}.jpg" />
-							<span>${item.owner}</span>
+							<span class="userid">${item.owner}</span>
 						</article>
           </div>
         </li>
