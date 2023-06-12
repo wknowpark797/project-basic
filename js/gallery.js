@@ -23,10 +23,7 @@ fetchData(setURL('interest'));
 btnSearch.addEventListener('click', getSearch);
 
 // 검색창 키보드 이벤트
-input.addEventListener('keypress', (e) => {
-	console.log(e);
-	if (e.code === 'Enter') getSearch();
-});
+input.addEventListener('keypress', (e) => e.code === 'Enter' && getSearch());
 
 // 사용자 아이디 클릭 시 해당 갤러리 확인 이벤트
 wrap.addEventListener('click', (e) => {
@@ -67,6 +64,12 @@ async function fetchData(url) {
 	const json = await res.json();
 	const items = json.photos.photo;
 	console.log(items);
+
+	if (items.length === 0) {
+		loading.classList.add('off');
+		wrap.classList.add('on');
+		return alert('해당 검색어의 결과가 없습니다.');
+	}
 
 	createList(items);
 }
