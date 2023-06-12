@@ -26,10 +26,10 @@ btnSearch.addEventListener('click', getSearch);
 input.addEventListener('keypress', (e) => e.code === 'Enter' && getSearch());
 
 // 사용자 아이디 클릭 시 해당 갤러리 확인 이벤트
-wrap.addEventListener('click', (e) => {
-	if (e.target.className === 'userid') {
-		fetchData(setURL('user', e.target.innerText));
-	}
+document.body.addEventListener('click', (e) => {
+	if (e.target.className === 'userid') fetchData(setURL('user', e.target.innerText));
+	if (e.target.className === 'thumb') createPop(e.target.getAttribute('alt'));
+	if (e.target.className === 'close') removePop();
 });
 
 btnInterest.addEventListener('click', () => fetchData(setURL('interest')));
@@ -81,11 +81,10 @@ function createList(arr) {
 		tags += `
         <li class="item">
           <div>
-            <a href="https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg">
-              <img class="thumb" src="https://live.staticflickr.com/${item.server}/${item.id}_${
-			item.secret
-		}_m.jpg" />
-            </a>
+						<img class="thumb" 
+							src="https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_m.jpg" 
+							alt="https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_b.jpg" />
+
             <p>${item.title === '' ? 'Have a good day ~' : item.title}</p>
 
 						<article class="profile">
@@ -138,4 +137,34 @@ function isoLayout() {
 
 	wrap.classList.add('on');
 	loading.classList.add('off');
+}
+
+function createPop(url) {
+	document.body.style.overflow = 'hidden';
+	const aside = document.createElement('aside');
+	aside.className = 'pop';
+
+	const tags = `
+		<div class="con">
+			<img src="${url}" />
+		</div>
+		<span class="close">close</span>
+	`;
+
+	aside.innerHTML = tags;
+	document.body.append(aside);
+
+	setTimeout(() => {
+		document.querySelector('.pop').classList.add('on');
+	}, 0);
+}
+
+function removePop() {
+	document.body.style.overflow = 'auto';
+	const pop = document.querySelector('.pop');
+	pop.classList.remove('on');
+
+	setTimeout(() => {
+		pop.remove();
+	}, 1000);
 }
