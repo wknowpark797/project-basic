@@ -17,9 +17,9 @@ btnSubmit.addEventListener('click', (e) => {
 	if (!isText('comments', 10)) e.preventDefault();
 	// if (!isPwd('pwd1', 'pwd2', 4)) e.preventDefault();
 	// if (!isEmail('email', 6)) e.preventDefault();
-	// if (!isCheck('gender')) e.preventDefault();
-	// if (!isCheck('hobby')) e.preventDefault();
-	// if (!isSelect('edu')) e.preventDefault();
+	if (!isCheck('gender')) e.preventDefault();
+	if (!isCheck('hobby')) e.preventDefault();
+	if (!isSelect('edu')) e.preventDefault();
 });
 
 // 텍스트 항목 인증 (input, textarea)
@@ -80,11 +80,15 @@ function isCheck(name) {
 	for (const input of inputs) input.checked && (isChecked = true);
 
 	if (!isChecked) {
-		alert('해당 선택사항을 하나 이상 선택하세요.');
+		resetError(inputs);
+		const errMsg = document.createElement('p');
+		errMsg.innerText = `'해당 선택사항을 하나 이상 선택하세요.'`;
+		inputs[0].closest('td').append(errMsg);
 		return false;
+	} else {
+		resetError(inputs);
+		return true;
 	}
-
-	return true;
 }
 
 // select 요소 인증
@@ -96,11 +100,15 @@ function isSelect(name) {
 	const value = input.options[selectedIndex].value;
 
 	if (value === '') {
-		alert('해당 요소 중 하나를 선택해주세요.');
+		resetError(input);
+		const errMsg = document.createElement('p');
+		errMsg.innerText = `해당 요소 중 하나를 선택해주세요.`;
+		input.closest('td').append(errMsg);
 		return false;
+	} else {
+		resetError(input);
+		return true;
 	}
-
-	return true;
 }
 
 // 에러 메세지 제거 함수
