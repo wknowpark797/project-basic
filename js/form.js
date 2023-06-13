@@ -15,11 +15,11 @@ const btnSubmit = form.querySelector('input[type=submit]');
 btnSubmit.addEventListener('click', (e) => {
 	if (!isText('userid', 5)) e.preventDefault();
 	if (!isText('comments', 10)) e.preventDefault();
-	if (!isPwd('pwd1', 'pwd2', 4)) e.preventDefault();
-	if (!isEmail('email', 6)) e.preventDefault();
-	if (!isCheck('gender')) e.preventDefault();
-	if (!isCheck('hobby')) e.preventDefault();
-	if (!isSelect('edu')) e.preventDefault();
+	// if (!isPwd('pwd1', 'pwd2', 4)) e.preventDefault();
+	// if (!isEmail('email', 6)) e.preventDefault();
+	// if (!isCheck('gender')) e.preventDefault();
+	// if (!isCheck('hobby')) e.preventDefault();
+	// if (!isSelect('edu')) e.preventDefault();
 });
 
 // 텍스트 항목 인증 (input, textarea)
@@ -28,11 +28,15 @@ function isText(name, length) {
 	const text = input.value.trim();
 
 	if (text.length < length) {
-		alert(`입력 항목에 ${length}글자 이상 입력하세요.`);
+		resetError(input);
+		const errMsg = document.createElement('p');
+		errMsg.innerText = `입력 항목에 ${length}글자 이상 입력하세요.`;
+		input.closest('td').append(errMsg);
 		return false;
+	} else {
+		resetError(input);
+		return true;
 	}
-
-	return true;
 }
 
 /*
@@ -97,4 +101,12 @@ function isSelect(name) {
 	}
 
 	return true;
+}
+
+// 에러 메세지 제거 함수
+function resetError(inputs) {
+	let element = null;
+	inputs.length ? (element = inputs[0]) : (element = inputs);
+	const errMsg = element.closest('td').querySelector('p');
+	if (errMsg) element.closest('td').querySelector('p').remove();
 }
