@@ -15,7 +15,7 @@ const btnSubmit = form.querySelector('input[type=submit]');
 btnSubmit.addEventListener('click', (e) => {
 	if (!isText('userid', 5)) e.preventDefault();
 	if (!isText('comments', 10)) e.preventDefault();
-	// if (!isPwd('pwd1', 'pwd2', 4)) e.preventDefault();
+	if (!isPwd('pwd1', 'pwd2', 4)) e.preventDefault();
 	// if (!isEmail('email', 6)) e.preventDefault();
 	if (!isCheck('gender')) e.preventDefault();
 	if (!isCheck('hobby')) e.preventDefault();
@@ -44,15 +44,33 @@ function isText(name, length) {
 	- 다섯글자 이상 입력, 두개의 비밀번호 일치
 */
 function isPwd(pwd1, pwd2, length) {
+	const pwdEl1 = form.querySelector(`[name=${pwd1}]`);
+
+	const num = /[0-9]/;
+	const eng = /[a-zA-Z]/;
+	const spc = /[!@#$%^&*()_+]/;
+
 	const pwdValue1 = form.querySelector(`[name=${pwd1}]`).value;
 	const pwdValue2 = form.querySelector(`[name=${pwd2}]`).value;
 
-	if (pwdValue1 !== pwdValue2 || pwdValue1.length < length) {
-		alert(`두개의 비밀번호를 동일하게 입력하고 ${length}글자 이상 입력하세요.`);
-		return false;
-	}
+	// num.test(pwdValue1): pwdValue1에서 정규표현식으로 분류한 값이 포함되어 있으면 true를 반환
 
-	return true;
+	if (
+		pwdValue1 !== pwdValue2 ||
+		pwdValue1.length < length ||
+		!num.test(pwdValue1) ||
+		!eng.test(pwdValue1) ||
+		!spc.test(pwdValue1)
+	) {
+		resetError(pwdEl1);
+		const errMsg = document.createElement('p');
+		errMsg.innerText = `비밀번호는 ${length}글자 이상, 특수문자, 영문, 숫자를 모두 포함하세요.`;
+		pwdEl1.closest('td').append(errMsg);
+		return false;
+	} else {
+		resetError(pwdEl1);
+		return true;
+	}
 }
 
 /*
