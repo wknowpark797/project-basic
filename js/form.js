@@ -17,7 +17,8 @@ btnSubmit.addEventListener('click', (e) => {
 	if (!isText('comments', 10)) e.preventDefault();
 	if (!isPwd('pwd1', 'pwd2', 4)) e.preventDefault();
 	if (!isEmail('email', 6)) e.preventDefault();
-	// if (!isCheck()) e.preventDefault();
+	if (!isCheck('gender')) e.preventDefault();
+	if (!isCheck('hobby')) e.preventDefault();
 	// if (!isSelect()) e.preventDefault();
 });
 
@@ -67,6 +68,18 @@ function isEmail(name, length) {
 
 // check 요소 인증
 function isCheck(name) {
+	const inputs = document.querySelectorAll(`[name=${name}]`);
+
+	let isChecked = false;
+
+	// 현재 반복되는 체크 요소에 하나라도 체크가 되어있다면 지역변수 isChecked = true 로 변경
+	for (const input of inputs) input.checked && (isChecked = true);
+
+	if (!isChecked) {
+		alert('해당 선택사항을 하나 이상 선택하세요.');
+		return false;
+	}
+
 	return true;
 }
 
