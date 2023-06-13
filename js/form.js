@@ -16,7 +16,7 @@ btnSubmit.addEventListener('click', (e) => {
 	if (!isText('userid', 5)) e.preventDefault();
 	if (!isText('comments', 10)) e.preventDefault();
 	if (!isPwd('pwd1', 'pwd2', 4)) e.preventDefault();
-	// if (!isEmail('email', 6)) e.preventDefault();
+	if (!isEmail('email', 6)) e.preventDefault();
 	if (!isCheck('gender')) e.preventDefault();
 	if (!isCheck('hobby')) e.preventDefault();
 	if (!isSelect('edu')) e.preventDefault();
@@ -78,14 +78,41 @@ function isPwd(pwd1, pwd2, length) {
 	- 여섯글자 이상 입력, @ 포함
 */
 function isEmail(name, length) {
-	const email = form.querySelector(`[name=${name}]`).value;
+	const email = form.querySelector(`[name=${name}]`);
+	const emailVal = email.value;
 
-	if (!email.indexOf('@') || email.length < length) {
-		alert(`이메일 주소에 @가 포함되어야 하고 ${length}글자 이상 입력하세요.`);
+	// 이메일 주소에 @ 여부 판단
+	if (/@/.test(emailVal)) {
+		const [prevText, nextText] = emailVal.split('@');
+
+		// @의 앞뒤 문자 여부 판단
+		if (!prevText || !nextText) {
+			resetError(email);
+			const errMsg = document.createElement('p');
+			errMsg.innerText = `@ 앞쪽이나 뒤쪽에 문자값이 없습니다.`;
+			email.closest('td').append(errMsg);
+			return false;
+		} else {
+			// 뒤쪽 문자에 . 여부 판단
+			// 정규표현식 안쪽에 예약어로 인지되는 문자 앞에 \를 붙여 문자로 연산
+			if (!/\./.test(nextText)) {
+				resetError(email);
+				const errMsg = document.createElement('p');
+				errMsg.innerText = `@ 뒤쪽에 서비스명이 올바른지 확인하세요.`;
+				email.closest('td').append(errMsg);
+				return false;
+			} else {
+				resetError(email);
+				return true;
+			}
+		}
+	} else {
+		resetError(email);
+		const errMsg = document.createElement('p');
+		errMsg.innerText = `@를 포함하세요.`;
+		email.closest('td').append(errMsg);
 		return false;
 	}
-
-	return true;
 }
 
 // check 요소 인증
