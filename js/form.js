@@ -19,7 +19,7 @@ btnSubmit.addEventListener('click', (e) => {
 	if (!isEmail('email', 6)) e.preventDefault();
 	if (!isCheck('gender')) e.preventDefault();
 	if (!isCheck('hobby')) e.preventDefault();
-	// if (!isSelect()) e.preventDefault();
+	if (!isSelect('edu')) e.preventDefault();
 });
 
 // 텍스트 항목 인증 (input, textarea)
@@ -84,6 +84,17 @@ function isCheck(name) {
 }
 
 // select 요소 인증
+console.log(document.querySelector('select[name=edu]'));
+
 function isSelect(name) {
+	const input = form.querySelector(`[name=${name}]`);
+	const selectedIndex = input.options.selectedIndex;
+	const value = input.options[selectedIndex].value;
+
+	if (value === '') {
+		alert('해당 요소 중 하나를 선택해주세요.');
+		return false;
+	}
+
 	return true;
 }
