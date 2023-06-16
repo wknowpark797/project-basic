@@ -854,4 +854,11 @@ footer .lower p:last-child {
   font: 11px/1 "맑은 고딕";
 }
 
+.location .inner #map {
+  width: 100%;
+  height: 400px;
+  background: #111;
+  position: relative;
+}
+
 /*# sourceMappingURL=style.css.map */
