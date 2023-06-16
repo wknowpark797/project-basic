@@ -6,23 +6,47 @@
   3. 해당 테스트 화면에서 정밀하게 원하는 지점을 클릭하여 해당 코드값을 활용
 */
 
-// 기본 지도 생성
 const mapContainer = document.querySelector('#map');
-const position = new kakao.maps.LatLng(37.51269647949463, 127.06068851054262); // 지도 위치 인스턴스
-const mapOption = { center: position, level: 3 }; // 지도 생성 옵션
+const btns = document.querySelectorAll('.branch li');
+
+const markerInfo = [
+	{
+		title: '코엑스',
+		position: new kakao.maps.LatLng(37.51269647949463, 127.06068851054262), // 지도 위치 인스턴스
+		imgSrc: 'img/marker1.png',
+		imgSize: new kakao.maps.Size(232, 99),
+		imgOption: { offset: new kakao.maps.Point(116, 99) },
+		button: btns[0],
+	},
+	{
+		title: '광화문',
+		position: new kakao.maps.LatLng(37.57544863980594, 126.97684985950524),
+		imgSrc: 'img/marker2.png',
+		imgSize: new kakao.maps.Size(232, 99),
+		imgOption: { offset: new kakao.maps.Point(116, 99) },
+		button: btns[1],
+	},
+	{
+		title: '카카오 본사',
+		position: new kakao.maps.LatLng(33.450701, 126.570667),
+		imgSrc: 'img/marker3.png',
+		imgSize: new kakao.maps.Size(232, 99),
+		imgOption: { offset: new kakao.maps.Point(116, 99) },
+		button: btns[2],
+	},
+];
+
+// 기본 지도 생성
+const mapOption = { center: markerInfo[0].position, level: 3 }; // 지도 생성 옵션
 const map = new kakao.maps.Map(mapContainer, mapOption); // 지도 인스턴스 생성
 
-// Marker 이미지 변경
-const imageSrc = 'img/marker1.png';
-const imageSize = new kakao.maps.Size(232, 99);
-const imageOption = { offset: new kakao.maps.Point(116, 99) };
-const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+// Marker 이미지 등록
+markerInfo.forEach((info) => {
+	const markerImage = new kakao.maps.MarkerImage(info.imgSrc, info.imgSize, info.imgOption);
+	const marker = new kakao.maps.Marker({ position: info.position, image: markerImage });
 
-// Marker 인스턴스 생성
-const marker = new kakao.maps.Marker({
-	position: position,
-	image: markerImage,
+	// Marker 인스턴스의 setMap 함수로 지도 인스턴스 바인딩
+	marker.setMap(map);
+
+	info.button.addEventListener('click', () => map.panTo(info.position));
 });
-
-// Marker 인스턴스에서 setMap 함수로 지도 인스턴스 바인딩
-marker.setMap(map);
