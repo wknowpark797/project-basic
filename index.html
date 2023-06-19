@@ -9,6 +9,9 @@
   <script defer src="js/cookiePop.js"></script>
   <script src="https://kit.fontawesome.com/57de64ccd3.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script defer type="module" src="js/visual.js"></script>
 </head>
 
 <body>
@@ -48,14 +51,10 @@
 
   <!-- figure: 인터랙티브 영역에 사용하는 시멘틱 태그 -->
   <figure id="visual">
-    <video src="img/visual.mp4" autoplay muted loop></video>
-    <!-- muted: 강제 음소거 (접근성 고려) -->
-
-    <div class="txt">
-      <h1>INNOVATION</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum laboriosam inventore atque tenetur non obcaecati
-        harum assumenda officiis, veniam eligendi!</p>
-      <a href="#">VIEW OUR PORTFOLIO</a>
+    <div class="swiper-wrapper">
+      <article data-slide="1" class="swiper-slide">1</article>
+      <article data-slide="2" class="swiper-slide">2</article>
+      <article data-slide="3" class="swiper-slide">3</article>
     </div>
   </figure>
 
