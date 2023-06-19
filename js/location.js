@@ -8,7 +8,9 @@
 
 const mapContainer = document.querySelector('#map');
 const btns = document.querySelectorAll('.branch li');
+const btnToggle = document.querySelector('.btn-toggle');
 let activeIndex = 0;
+let toggle = false;
 
 const markerInfo = [
 	{
@@ -73,4 +75,16 @@ markerInfo.forEach((info, idx) => {
 window.addEventListener('resize', () => {
 	// 현재 활성화 되어있는 순번의 지역위치값으로 맵 인스턴스 가운데 위치 보정
 	map.setCenter(markerInfo[activeIndex].position);
+});
+
+// Toggle 버튼 클릭시 교통량 정보 ON / OFF
+btnToggle.addEventListener('click', () => {
+	toggle = !toggle;
+	if (toggle) {
+		map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+		btnToggle.innerHTML = 'Traffic ON';
+	} else {
+		map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+		btnToggle.innerHTML = 'Traffic OFF';
+	}
 });
