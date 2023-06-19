@@ -40,6 +40,15 @@ const markerInfo = [
 // 기본 지도 생성
 const mapOption = { center: markerInfo[0].position, level: 3 }; // 지도 생성 옵션
 const map = new kakao.maps.Map(mapContainer, mapOption); // 지도 인스턴스 생성
+map.setZoomable(false); // 마우스휠 이벤트시 줌 기능 비활성화
+
+// 맵타입 인스턴스 생성 후 맵인스턴스에 바인딩
+const mapTypeControl = new kakao.maps.MapTypeControl();
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+// 맵 줌 컨트롤 인스턴스 생성 후 맵인스턴스에 바인딩
+const zoomControl = new kakao.maps.ZoomControl();
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 // Marker 이미지 등록
 markerInfo.forEach((info, idx) => {
