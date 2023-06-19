@@ -8,6 +8,7 @@
 
 const mapContainer = document.querySelector('#map');
 const btns = document.querySelectorAll('.branch li');
+let activeIndex = 0;
 
 const markerInfo = [
 	{
@@ -41,12 +42,26 @@ const mapOption = { center: markerInfo[0].position, level: 3 }; // 지도 생성
 const map = new kakao.maps.Map(mapContainer, mapOption); // 지도 인스턴스 생성
 
 // Marker 이미지 등록
-markerInfo.forEach((info) => {
+markerInfo.forEach((info, idx) => {
 	const markerImage = new kakao.maps.MarkerImage(info.imgSrc, info.imgSize, info.imgOption);
 	const marker = new kakao.maps.Marker({ position: info.position, image: markerImage });
 
 	// Marker 인스턴스의 setMap 함수로 지도 인스턴스 바인딩
 	marker.setMap(map);
 
-	info.button.addEventListener('click', () => map.panTo(info.position));
+	// 클릭한 버튼의 순번을 activeIndex 전역변수에 저장
+	// -> 브라우저 리사이즈 시 현재 활성화 된 지역위치의 데이터 순번에 활용
+	info.button.addEventListener('click', () => {
+		activeIndex = idx;
+		map.panTo(info.position);
+
+		for (const btn of btns) btn.classList.remove('on');
+		btns[idx].classList.add('on');
+	});
+});
+
+// 브라우저 리사이즈 시 지도 위치 및 마커 가운데 고정
+window.addEventListener('resize', () => {
+	// 현재 활성화 되어있는 순번의 지역위치값으로 맵 인스턴스 가운데 위치 보정
+	map.setCenter(markerInfo[activeIndex].position);
 });
