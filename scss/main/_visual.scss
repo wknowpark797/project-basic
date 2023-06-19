@@ -16,6 +16,39 @@
 			background: orange;
 		}
 	}
+
+	.swiper-button-next {
+		top: auto;
+		bottom: 0;
+		right: 50px;
+		transform: scale(0.5);
+		filter: brightness(0) saturate(0); // 명도, 채도
+	}
+	.swiper-button-prev {
+		top: auto;
+		bottom: 0;
+		left: auto;
+		right: 100px;
+		transform: scale(0.5);
+		filter: brightness(0) saturate(0);
+	}
+
+	.btnPlay {
+		position: absolute;
+		bottom: 50px;
+		left: 50px;
+		cursor: pointer;
+		font-size: 20px;
+		z-index: 5;
+	}
+	.btnPause {
+		position: absolute;
+		bottom: 50px;
+		left: 100px;
+		cursor: pointer;
+		font-size: 20px;
+		z-index: 5;
+	}
 }
 
 @media screen and (max-width: $tablet) {

@@ -246,6 +246,37 @@ footer .lower p:last-child {
 #visual .swiper-wrapper article[data-slide="3"] {
   background: orange;
 }
+#visual .swiper-button-next {
+  top: auto;
+  bottom: 0;
+  right: 50px;
+  transform: scale(0.5);
+  filter: brightness(0) saturate(0);
+}
+#visual .swiper-button-prev {
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 100px;
+  transform: scale(0.5);
+  filter: brightness(0) saturate(0);
+}
+#visual .btnPlay {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 5;
+}
+#visual .btnPause {
+  position: absolute;
+  bottom: 50px;
+  left: 100px;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 5;
+}
 
 @media screen and (max-width: 999px) {
   #visual {

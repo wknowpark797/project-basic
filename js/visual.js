@@ -6,4 +6,28 @@
   4. 스크립트 파일에서 new Swiper('frame명');
 */
 
-new Swiper('#visual');
+const btnPlay = document.querySelector('.btnPlay');
+const btnPause = document.querySelector('.btnPause');
+
+const swiper = new Swiper('#visual', {
+	loop: true,
+	effect: 'fade',
+	autoplay: {
+		delay: 1000,
+	},
+	pagination: {
+		el: '.swiper-pagination',
+		clickable: true,
+	},
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
+	},
+});
+
+btnPlay.addEventListener('click', () => {
+	swiper.autoplay.start();
+});
+btnPause.addEventListener('click', () => {
+	swiper.autoplay.stop();
+});
