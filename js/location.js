@@ -39,16 +39,17 @@ const markerInfo = [
 	},
 ];
 
-// 기본 지도 생성
-const mapOption = { center: markerInfo[0].position, level: 3 }; // 지도 생성 옵션
-const map = new kakao.maps.Map(mapContainer, mapOption); // 지도 인스턴스 생성
-map.setZoomable(false); // 마우스휠 이벤트시 줌 기능 비활성화
+// 화면 로딩 시 첫번째 데이터로 지도 인스턴스 생성
+const mapOption = { center: markerInfo[0].position, level: 3 };
+const map = new kakao.maps.Map(mapContainer, mapOption);
 
-// 맵타입 인스턴스 생성 후 맵인스턴스에 바인딩
+map.setZoomable(false); // mousewheel 이벤트시 "zoom 기능" 비활성화
+
+// "지도타입 컨트롤" 인스턴스 생성 후 map 인스턴스에 바인딩
 const mapTypeControl = new kakao.maps.MapTypeControl();
 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
-// 맵 줌 컨트롤 인스턴스 생성 후 맵인스턴스에 바인딩
+// "지도 zoom 컨트롤" 인스턴스 생성 후 map 인스턴스에 바인딩
 const zoomControl = new kakao.maps.ZoomControl();
 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
@@ -71,15 +72,16 @@ markerInfo.forEach((info, idx) => {
 	});
 });
 
-// 브라우저 리사이즈 시 지도 위치 및 마커 가운데 고정
+// 브라우저 resize 시 지도 위치 및 Marker 가운데 고정
 window.addEventListener('resize', () => {
-	// 현재 활성화 되어있는 순번의 지역위치값으로 맵 인스턴스 가운데 위치 보정
+	// 활성화 되어있는 순번의 지역위치값으로 map 인스턴스 가운데 위치 고정
 	map.setCenter(markerInfo[activeIndex].position);
 });
 
 // Toggle 버튼 클릭시 교통량 정보 ON / OFF
 btnToggle.addEventListener('click', () => {
 	toggle = !toggle;
+
 	if (toggle) {
 		map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 		btnToggle.innerHTML = 'Traffic ON';

@@ -20,6 +20,7 @@
     window.onload = function () {
       document.getElementById('contact-form').addEventListener('submit', function (event) {
         event.preventDefault();
+
         // 내부적으로 필요한 고유 키값을 랜덤으로 생성
         this.contact_number.value = Math.random() * 100000 | 0;
 
@@ -92,10 +93,10 @@
 
       <article class="contact">
         <form id="contact-form">
-          <!-- 내부적인 고유 키값이 전달되는 폼 요소 (수정 X) -->
+          <!-- 내부적으로 고유 키값이 전달되는 폼 요소 (수정 X) -->
           <input type="hidden" name="contact_number">
 
-          <!-- EmailJS 에서의 변수명과 일치시켜야 한다. -->
+          <!-- EmailJS로 전달되는 변수명과 name이 일치해야 한다. -->
           <!-- 작성자 이름 -->
           <label>Name</label>
           <input type="text" name="user_name">
