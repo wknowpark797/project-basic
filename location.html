@@ -9,7 +9,30 @@
   <script src="https://kit.fontawesome.com/57de64ccd3.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=138c090e69fe7f8783709c1f2242d6c7"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script defer src="js/location.js"></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init('jupOkSJY9CbSbfcLR');
+    })();
+  </script>
+  <script type="text/javascript">
+    window.onload = function () {
+      document.getElementById('contact-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        // 내부적으로 필요한 고유 키값을 랜덤으로 생성
+        this.contact_number.value = Math.random() * 100000 | 0;
+
+        // sendForm(Service ID, Template ID)
+        emailjs.sendForm('service_9gz6979', 'template_p22mw5k', this)
+          .then(function () {
+            console.log('SUCCESS!');
+          }, function (error) {
+            console.log('FAILED...', error);
+          });
+      });
+    }
+  </script>
 </head>
 
 <body>
@@ -51,19 +74,43 @@
     <figure class="sub-visual"></figure>
 
     <div class="inner">
-      <h1>Location</h1>
+      <article class="place">
+        <h1>Location</h1>
 
-      <div id="map"></div>
+        <div id="map"></div>
 
-      <ul class="branch">
-        <li class="on">코엑스</li>
-        <li>광화문</li>
-        <li>카카오 본사</li>
-      </ul>
+        <ul class="branch">
+          <li class="on">코엑스</li>
+          <li>광화문</li>
+          <li>카카오 본사</li>
+        </ul>
 
-      <button type="button" class="btn-toggle">
-        Traffic OFF
-      </button>
+        <button type="button" class="btn-toggle">
+          Traffic OFF
+        </button>
+      </article>
+
+      <article class="contact">
+        <form id="contact-form">
+          <!-- 내부적인 고유 키값이 전달되는 폼 요소 (수정 X) -->
+          <input type="hidden" name="contact_number">
+
+          <!-- EmailJS 에서의 변수명과 일치시켜야 한다. -->
+          <!-- 작성자 이름 -->
+          <label>Name</label>
+          <input type="text" name="user_name">
+
+          <!-- 작성자 이메일 주소 -->
+          <label>Email</label>
+          <input type="email" name="user_email">
+
+          <!-- 작성 내용 -->
+          <label>Message</label>
+          <textarea name="message"></textarea>
+
+          <input type="submit" value="Send">
+        </form>
+      </article>
     </div>
   </section>
 
