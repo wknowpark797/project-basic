@@ -50,9 +50,3 @@
 		z-index: 5;
 	}
 }
-
-@media screen and (max-width: $tablet) {
-	#visual {
-		height: calc(100vh - 100px);
-	}
-}
