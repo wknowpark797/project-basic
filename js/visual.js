@@ -15,7 +15,7 @@ const btnNext = document.querySelector('.swiper-button-next');
 
 const swiper = new Swiper('#visual', {
 	loop: true,
-	effect: 'fade',
+	// effect: 'fade',
 	autoplay: {
 		delay: 1000,
 	},
@@ -26,6 +26,25 @@ const swiper = new Swiper('#visual', {
 	navigation: {
 		nextEl: '.swiper-button-next',
 		prevEl: '.swiper-button-prev',
+	},
+	slidesPerView: 3,
+	spaceBetween: 30,
+	breakpoints: {
+		// 0px 이상일 때 (mobile)
+		0: {
+			slidesPerView: 1,
+			spaceBetween: 0,
+		},
+		// 640px 이상일 때 (tablet)
+		640: {
+			slidesPerView: 2,
+			spaceBetween: 20,
+		},
+		// 1000px 이상일 때 (desktop)
+		1000: {
+			slidesPerView: 3,
+			spaceBetween: 30,
+		},
 	},
 });
 

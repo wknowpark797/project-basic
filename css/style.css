@@ -246,6 +246,15 @@ footer .lower p:last-child {
 #visual .swiper-wrapper article[data-slide="3"] {
   background: orange;
 }
+#visual .swiper-wrapper article[data-slide="4"] {
+  background: lightgreen;
+}
+#visual .swiper-wrapper article[data-slide="5"] {
+  background: orange;
+}
+#visual .swiper-wrapper article[data-slide="6"] {
+  background: blueviolet;
+}
 #visual .swiper-button-next {
   top: auto;
   bottom: 0;
