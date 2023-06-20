@@ -46,3 +46,8 @@ btnPause.addEventListener('click', () => {
 		btnPlay.classList.remove('on');
 	});
 });
+
+swiper.on('sliderMove', function () {
+	btnPause.classList.add('on');
+	btnPlay.classList.remove('on');
+});
