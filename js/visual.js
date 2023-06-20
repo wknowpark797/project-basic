@@ -55,18 +55,16 @@ btnPlay.addEventListener('click', () => {
 });
 btnPause.addEventListener('click', () => {
 	swiper.autoplay.stop();
-	btnPause.classList.add('on');
-	btnPlay.classList.remove('on');
+	activateBtnPause();
 });
 
 [btnPagination, btnPrev, btnNext].forEach((el) => {
-	el.addEventListener('click', () => {
-		btnPause.classList.add('on');
-		btnPlay.classList.remove('on');
-	});
+	el.addEventListener('click', activateBtnPause);
 });
 
-swiper.on('sliderMove', function () {
+swiper.on('sliderMove', activateBtnPause);
+
+function activateBtnPause() {
 	btnPause.classList.add('on');
 	btnPlay.classList.remove('on');
-});
+}
