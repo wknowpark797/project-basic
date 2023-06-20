@@ -9,6 +9,9 @@
 
 const btnPlay = document.querySelector('.btnPlay');
 const btnPause = document.querySelector('.btnPause');
+const btnPagination = document.querySelector('.swiper-pagination');
+const btnPrev = document.querySelector('.swiper-button-prev');
+const btnNext = document.querySelector('.swiper-button-next');
 
 const swiper = new Swiper('#visual', {
 	loop: true,
@@ -28,7 +31,18 @@ const swiper = new Swiper('#visual', {
 
 btnPlay.addEventListener('click', () => {
 	swiper.autoplay.start();
+	btnPlay.classList.add('on');
+	btnPause.classList.remove('on');
 });
 btnPause.addEventListener('click', () => {
 	swiper.autoplay.stop();
+	btnPause.classList.add('on');
+	btnPlay.classList.remove('on');
+});
+
+[btnPagination, btnPrev, btnNext].forEach((el) => {
+	el.addEventListener('click', () => {
+		btnPause.classList.add('on');
+		btnPlay.classList.remove('on');
+	});
 });
