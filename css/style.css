@@ -237,6 +237,31 @@ footer .lower p:last-child {
   position: relative;
   overflow: hidden;
 }
+#visual .swiper-wrapper article {
+  height: 500px;
+  position: relative;
+  top: 50%;
+  margin-top: -250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 50px;
+  transition: 0.5s;
+}
+#visual .swiper-wrapper article.swiper-slide {
+  transform: scale(0.4);
+  opacity: 0;
+}
+#visual .swiper-wrapper article.swiper-slide-prev,
+#visual .swiper-wrapper article.swiper-slide-next {
+  transform: scale(0.7);
+  opacity: 0.5;
+}
+#visual .swiper-wrapper article.swiper-slide-active {
+  transform: scale(1);
+  opacity: 1;
+}
 #visual .swiper-wrapper article[data-slide="1"] {
   background: hotpink;
 }

@@ -16,6 +16,7 @@ const btnNext = document.querySelector('.swiper-button-next');
 const swiper = new Swiper('#visual', {
 	loop: true,
 	// effect: 'fade',
+	centeredSlides: true,
 	autoplay: {
 		delay: 1000,
 	},
