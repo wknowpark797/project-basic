@@ -12,6 +12,7 @@ const btnPause = document.querySelector('.btnPause');
 const btnPagination = document.querySelector('.swiper-pagination');
 const btnPrev = document.querySelector('.swiper-button-prev');
 const btnNext = document.querySelector('.swiper-button-next');
+const frame = document.querySelector('#visual');
 
 const swiper = new Swiper('#visual', {
 	loop: true,
