@@ -88,8 +88,8 @@ document.body.addEventListener('click', (e) => {
 
 // 데이터 fetching 함수
 async function fetchData() {
-	const key = 'AIzaSyDwb_57BfoNHLxlZ-Mwn2O3VNVt2tFNNMw';
-	const list = 'PLEJLcTMBRARfXocKJpD9DCEBS1kUxA7jl';
+	const key = 'AIzaSyA4f3SqOYivsLVITR7K6g5K0QrKhvUZ7hw';
+	const list = 'PLuYjs7JL1VFCBJV6rASuppjv0wuF4iTR7';
 	const num = 10;
 	const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${list}&key=${key}&maxResults=${num}`;
 
@@ -120,9 +120,7 @@ function createList(arr) {
         </div>
         
         <div class="pic">
-          <img class="thumb" src="${item.snippet.thumbnails.standard.url}" alt=${
-			item.snippet.resourceId.videoId
-		} />
+          <img class="thumb" src="${item.snippet.thumbnails.standard.url}" alt=${item.snippet.resourceId.videoId} />
         </div>
       </article>
     `;
